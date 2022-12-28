@@ -32,11 +32,11 @@ function addNote() {
     let anyTitle = document.getElementById('title').value;
     let anyNote = document.getElementById('note').value;
 
-        title.push(anyTitle);
-        note.push(anyNote);
+    title.push(anyTitle);
+    note.push(anyNote);
 
-        render();
-        save();
+    render();
+    save();
 }
 
 
@@ -104,13 +104,11 @@ function filterNotes() {
 }
 
 
-function addNewLine() {
+function pushEnterToAdd() {
     let input = document.getElementById('note');
     input.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-            input.innerHTML += `
-            <ul></ul>
-            `;
+            input.innerHTML += addNote();
         }
     });
 }
