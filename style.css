@@ -1,0 +1,159 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: #f5f6f7;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-bar {
+    border-bottom: 2px solid rgb(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #edfcde;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #69b0fa;
+}
+
+.icon img {
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.search {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+}
+
+.note-head {
+    margin-top: 50px;
+    display: flex;   
+    justify-content: center; 
+}
+
+.note-main {
+    display: flex;
+    flex-direction: column;    
+    border-radius: 10px;
+    border: 1.5px solid black;
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.note-main input {
+    border: none;
+    outline: none;
+    height: 30px;
+}
+
+#title {
+    font-weight: bold;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;    
+    padding-top: 50px;
+}
+.button button {
+    cursor: pointer;
+    background-color: white;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.button button:hover {
+    background-color: grey;
+    transition: all 125ms ease-in-out;
+    color: white;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 300px;
+    max-width: 500px;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.notes button {
+    border-radius: 7px;
+    padding: 3px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.bin-menu {
+    margin-top: 25px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-all {
+    background-color: white;
+    border-radius: 7px;
+    cursor: pointer;
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
+.restore-button {
+    padding: 3px;
+}
+
+@media(max-width: 600px) {
+    .search {
+        width: 130px;
+    }
+
+    .search input {
+        width: 100px;
+    }
+
+    .note-main {
+        width: 300px;
+    }
+
+    .notes {
+        max-width: 300px;
+    }
+}

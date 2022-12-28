@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>Notizen</title>
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body onload="render()">
+
+    <nav class="nav-bar">
+        <div class="icon">
+            <a href="index.html"><img src="img/icon.png">
+                <h1>Notizen</h1>
+            </a>
+        </div>
+        <div class="search">
+            <img src="img/search.png">
+            <input type="text" placeholder="search..." id="search" onchange="filterNotes()">
+        </div>
+        <div class="icon">
+            <a href="bin.html">
+                <h1>Papierkorb</h1>
+            </a>
+            <a href="bin.html">
+                <img class="icon" src="img/bin.png">
+            </a>
+        </div>
+    </nav>
+
+    <div class="note-head">
+        <div class="note-main">
+            <form onsubmit="addNote()"; return false;>
+                <div>
+                    <input placeholder="Titel" id="title" required>
+                </div>
+                <div>
+                    <input placeholder="Notiz schreiben..." id="note" required>
+                </div>
+                <div class="button">
+                    <button>Hinzufügen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="content">
+    </div>
+
+</body>
+
+</html>
