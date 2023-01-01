@@ -14,7 +14,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #edfcde;
+    background-color: white;
 }
 
 .icon {
@@ -42,6 +42,7 @@ body {
     align-items: center;
     background-color: white;
     border-radius: 10px;
+    border: 1.5px solid black;
     padding: 5px;
 }
 
