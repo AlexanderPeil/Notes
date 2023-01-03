@@ -37,6 +37,7 @@ function addNote() {
 
     render();
     save();
+    filterNotes();
 }
 
 
@@ -48,6 +49,7 @@ function deleteNote(i) {
 
     render();
     save();
+    filterNotes();
 }
 
 
@@ -104,14 +106,21 @@ function filterNotes() {
 }
 
 
-function pushEnterToAdd() {
-    let input = document.getElementById('note');
-    input.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            input.innerHTML += addNote();
-        }
-    });
+function addEventListener() {
+    if ((e.code === "Enter" && e.metaKey) || (e.code === "Enter" && e.ctrlKey)) {
+        saveNote();
+    }
 }
+
+
+// function pushEnterToAdd() {
+//     let input = document.getElementById('note');
+//     input.addEventListener('keypress', function (event) {
+//         if (event.key === 'Enter') {
+//             input.innerHTML += addNote();
+//         }
+//     });
+// }
 
 
 function loadBin() {
