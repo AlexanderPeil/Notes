@@ -38,8 +38,9 @@
     <div class="note-head">
         <div class="note-main">
             <form onsubmit="addNote()" ; return false;>
-                <div>
-                    <input placeholder="Titel" type="text" id="title" required>
+                    <!-- mit return false wird die Form nicht neu geladen -->
+                <div> <b>
+                    <input placeholder="Titel" type="text" id="title" contenteditable="true" required autofocus> </b>
                 </div>
                 <div>
                     <input placeholder="Notiz schreiben..." id="note" required>

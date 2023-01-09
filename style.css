@@ -118,6 +118,10 @@ body {
     margin-left: 10px;
 }
 
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
 .notes button {
     border-radius: 7px;
     padding: 3px;

@@ -17,7 +17,7 @@ function render() {
         content.innerHTML += `
     <div class="notes">
         <b>${title[i]}</b> <br>
-           ${note[i]} <br>
+        <span contenteditable="true">${note[i]}</span> <br>
            <button onclick="deleteNote(${i})">Löschen</button>
     </div>    
     `;
@@ -130,8 +130,6 @@ function loadBin() {
     for (let i = 0; i < deletedNotes.length; i++) {
         bin.innerHTML += generateBinContent(i);
     }
-
-    // Ganz wichtig: hier habe ich die Funktionen bin() und save() rausgenommen, da ich diese eine FUnktion unten in deleteNotes() bereits eingefügt habe.
 }
 
 
