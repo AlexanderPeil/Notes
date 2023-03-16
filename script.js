@@ -7,27 +7,41 @@ let deletedNotes = [];
 load();
 
 
-function render() {
-
+/**
+ * It's a body onload function. First the old content is deleted, then the function renderContent is executed with the param content.
+ */
+function init() {
     let content = document.getElementById('content');
     content.innerHTML = '';
 
-    for (let i = 0; i < note.length; i++) {
-
-        content.innerHTML += `
-    <div class="notes">
-        <b>${title[i]}</b> <br>
-        <span contenteditable="true">${note[i]}</span> <br>
-           <button onclick="deleteNote(${i})">Löschen</button>
-    </div>    
-    `;
-    }
+    renderContent(content);
 
     document.getElementById('title').value = '';
     document.getElementById('note').value = '';
 }
 
 
+/**
+ * This function renders a list of notes.
+ * @param {HTMLElement} content - The container which contains the content of all written notes. 
+ */
+function renderContent(content) {
+    for (let i = 0; i < note.length; i++) {
+
+        content.innerHTML += `
+    <div class="notes">
+        <b><h3>${title[i]}</h3></b> <br>
+        <span contenteditable="true">${note[i]}</span> <br>
+           <button onclick="deleteNote(${i})">Löschen</button>
+    </div>    
+    `;
+    }
+}
+
+
+/**
+ * Add a new note to an array of notes and call other functions to initialize, save and filter notes. 
+ */
 function addNote() {
     let anyTitle = document.getElementById('title').value;
     let anyNote = document.getElementById('note').value;
@@ -35,24 +49,32 @@ function addNote() {
     title.push(anyTitle);
     note.push(anyNote);
 
-    render();
+    init();
     save();
     filterNotes();
 }
 
 
+/**
+ * Delete a note from the array of notes by the splice method and push them into the arays deleted (bin.html). 
+ * Re-initialize saved notes and call the fucntion save. Furthermore filterNotes function is called too. 
+ * @param {for-loop} i - Fetches the right note from the array notes which has to be deleted. 
+ */
 function deleteNote(i) {
     deletedTitles.push(title[i]);
     deletedNotes.push(note[i]);
     title.splice(i, 1);
     note.splice(i, 1);
 
-    render();
+    init();
     save();
     filterNotes();
 }
 
 
+/**
+ * save the notes to the local storage. 
+ */
 function save() {
     let titleAsText = JSON.stringify(title);
     localStorage.setItem('title', titleAsText);
@@ -68,6 +90,9 @@ function save() {
 }
 
 
+/**
+ * Load the notes from the local storage.
+ */
 function load() {
     let titleAsText = localStorage.getItem('title');
     let noteAsText = localStorage.getItem('note');
@@ -84,6 +109,10 @@ function load() {
 }
 
 
+/**
+ * A function to filter the notes based on a search term entered by the user.
+ * toLowerCase is used to write all chars small and find filtered notes anyway.
+ */
 function filterNotes() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
@@ -91,6 +120,16 @@ function filterNotes() {
     let content = document.getElementById('content');
     content.innerHTML = '';
 
+    renderFilteredNotes(search, content);
+}
+
+
+/**
+ * Render the filtered notes. 
+ * @param {value} search - Value from the input field of filterNotes function.
+ * @param {HTMLElement} content - This content contains all written notes. 
+ */
+function renderFilteredNotes(search, content) {
     for (let i = 0; i < note.length; i++) {
         let titles = title[i];
         if (titles.toLowerCase().includes(search)) {
@@ -106,6 +145,9 @@ function filterNotes() {
 }
 
 
+/**
+ * This function is adds an eventListener. If the user press 'Enter' the note is saved (so call teh saveNote function).
+ */
 function addEventListener() {
     if ((e.code === "Enter" && e.metaKey) || (e.code === "Enter" && e.ctrlKey)) {
         saveNote();
@@ -113,16 +155,9 @@ function addEventListener() {
 }
 
 
-// function pushEnterToAdd() {
-//     let input = document.getElementById('note');
-//     input.addEventListener('keypress', function (event) {
-//         if (event.key === 'Enter') {
-//             input.innerHTML += addNote();
-//         }
-//     });
-// }
-
-
+/**
+ * Load the bin which contains all deleted notes.
+ */
 function loadBin() {
     let bin = document.getElementById('bin');
     bin.innerHTML = generateBin();
@@ -133,6 +168,10 @@ function loadBin() {
 }
 
 
+/**
+ * This function renders the bin page.
+ * @returns bin menu.
+ */
 function generateBin() {
     return `
     <div>
@@ -144,6 +183,11 @@ function generateBin() {
 }
 
 
+/**
+ * Render function to render the content with deleted notes.
+ * @param {for-loop} i - To show the right notes from the arrays deleted. 
+ * @returns HTML Content with deleted notes.
+ */
 function generateBinContent(i) {
     return ` 
     <div class="notes">
@@ -156,6 +200,10 @@ function generateBinContent(i) {
 }
 
 
+/**
+ * This function allows to delete one note from the bin by Using the splice method.
+ * @param {for-loop} i - To delete the right content from the arrays deleted.
+ */
 function deleteOneFromBin(i) {
     deletedTitles.splice(i, 1);
     deletedNotes.splice(i, 1);
@@ -165,7 +213,10 @@ function deleteOneFromBin(i) {
 }
 
 
-
+/**
+ * This function restores single notes from bin to save content.
+ * @param {for-loop} i - To restore the right notes from array deleted to array notes.  
+ */
 function restoreNotes(i) {
     title.push(deletedTitles[i]);
     note.push(deletedNotes[i]);
@@ -178,6 +229,10 @@ function restoreNotes(i) {
 }
 
 
+/**
+ * This function empty the whole bin content. 
+ * @param {for-loop} i - To delete the right notes from bin. 
+ */
 function deleteAll(i) {
     deletedTitles.splice(i);
     deletedNotes.splice(i);

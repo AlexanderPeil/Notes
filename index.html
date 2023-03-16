@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="render()">
+<body onload="init()">
 
     <nav class="nav-bar">
         <div class="icon">
@@ -40,7 +40,7 @@
             <form onsubmit="addNote()" ; return false;>
                     <!-- mit return false wird die Form nicht neu geladen -->
                 <div> <b>
-                    <input placeholder="Titel" type="text" id="title" contenteditable="true" required autofocus> </b>
+                    <input placeholder="Titel" type="text" id="title" contenteditable="true" required autofocus></b>
                 </div>
                 <div>
                     <input placeholder="Notiz schreiben..." id="note" required>

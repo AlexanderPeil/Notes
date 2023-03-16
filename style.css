@@ -77,6 +77,11 @@ body {
 
 #title {
     font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    font-size: 17px;
 }
 
 .button {
@@ -89,10 +94,11 @@ body {
     background-color: white;
     border-radius: 7px;
     padding: 5px;
+    font-size: 14px;
 }
 
 .button button:hover {
-    background-color: grey;
+    background-color: #69B0FA;
     transition: all 125ms ease-in-out;
     color: white;
 }
@@ -128,6 +134,22 @@ body {
     cursor: pointer;
     margin-top: 5px;
     background-color: white;
+    font-size: 14px;
+}
+
+.notes button:hover {
+    background-color: #69B0FA;
+    transition: all 125ms ease-in-out;
+    color: white;
+}
+
+h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.notes span {
+    font-size: 16px;
 }
 
 .bin-menu {
